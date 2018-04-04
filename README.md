@@ -115,6 +115,7 @@ INFO: Time to load datastore: 47 ms
 
 #### Local Datastore Viewer
 
+![alt text](./DatastoreLocal.png)
 
 #### App Engine console
 ```
@@ -166,6 +167,8 @@ To view your application in the web browser run:
 ```
 
 #### App Engine Datastore Viewer
+
+![alt text](./GoogleAppEngineDatastore.png)
 
 
 ## TASK 3: TEST THE PERFORMANCE OF DATASTORE WRITES
