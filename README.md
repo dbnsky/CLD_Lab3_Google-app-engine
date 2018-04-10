@@ -173,13 +173,70 @@ To view your application in the web browser run:
 
 ## TASK 3: TEST THE PERFORMANCE OF DATASTORE WRITES
 
-### For each performance test copy a screenshot of the JMeter Graph Results listener and the App Engine Dashboard view into the report.
+### Test configuration
+100 users who request 10 times servlet
+#### Thread Groups
+![alt text](./ThreadGroupsJmeter.png)
+#### HTTP Request (Generated Servlet)
+![alt text](./HttpRequestJmeter.png)
+#### HTTP Request (Datastore Servlet)
 
-### What response times do you observe in the test tool for each Servlet?
+
+### Generated Servlet
+#### JMeter 
+#### JMeter Graph Results listener
+![alt text](./GraphGeneratedServlet.png)
+#### App Engine Dashboard view
+![alt text](./DashboardGeneratedServlet.png)
+#### What response times do you observe in the test tool and App Engine console ?
+| Tool | average response times (ms) |
+|---|---|
+| App-Engine  |   |
+| Jmeter  |   |
+
+### Datastore Servlet
+#### JMeter Graph Results listener
+![alt text](./GraphDatastoreServlet.png)
+#### App Engine Dashboard view
+![alt text](./DatastoreDashboard.png)
+#### What response times do you observe in the test tool and App Engine console ?
+| Tool | average response times (ms) |
+|---|---|
+| App-Engine  |   |
+| Jmeter  |   |
+
 
 ### Compare the response times shown by the test tool and the App Engine console. Explain the difference.
+Les temps de réponses entre le dashboard et jmeter ne correspondent pas. La différence s'explique par la période de temps sur laquelle sont calculés les temps de réponses moyen.
+Chaque test Jmeter est effecuté indépendament des autres. C'est-à-dire que les valeurs calculées ne sont valides que pour ce test.
+Alors que la valeur disponible sur la console de l'App Engine est calculé en prenant en compte toutes les valeurs depuis sa création.
 
 ### How much resources have you used running these tests?
-From the Quota Details view of the console determine the non-zero resource quotas (Daily quota different from 0%). Explain each with a sentence. To get a sense of everything that is measured click on Show resources not in use.
+From the Quota Details view of the console determine the non-zero resource quotas (Daily quota different from 0%). Explain each with a sentence. To get a sense of everything that is measured click on Show 
+resources not in use.
+
+#### Request
+|  Ressource | Description  | Daily Quota  |
+|---|---|---|
+|   |   |   |
+
+#### Storage
+|  Ressource | Description  | Daily Quota  |
+|---|---|---|
+|   |   |   |
+
+#### Deployments
+|  Ressource | Description  | Daily Quota  |
+|---|---|---|
+|   |   |   |
+
+
 
 ### Let's suppose you become suspicious that the algorithm for the automatic scaling of instances is not working correctly. Imagine a way in which the algorithm could be broken. Which measures shown in the console would you use to detect this failure?
+1. Limite du nombre d'instance
+  * 
+2. Limite du quota journalier
+  * Consulter l'états des différents quota dans le menu "Quotas"
+3. Services de la platform Google Cloud indisponible
+  * Consulter les status des services à l'adresse : https://status.cloud.google.com
+
