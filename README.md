@@ -172,38 +172,35 @@ To view your application in the web browser run:
 
 
 ## TASK 3: TEST THE PERFORMANCE OF DATASTORE WRITES
-
-### Test configuration
-100 users who request 10 times servlet
-#### Thread Groups
-![alt text](./ThreadGroupsJmeter.png)
-#### HTTP Request (Generated Servlet)
-![alt text](./HttpRequestJmeter.png)
-#### HTTP Request (Datastore Servlet)
-
-
 ### Generated Servlet
 #### JMeter Graph Results listener
 ![alt text](./GraphGeneratedServlet.png)
+
 #### App Engine Dashboard view
-![alt text](./DashboardGeneratedServlet.png)
+![alt text](./DashBoardGeneratedNbInstance.png)
+![alt text](./DashBoardGeneratedLatency.png)
+![alt text](./DashboardGeneratedNbRequest.png)
+![alt text](./DashboardGeneratedCurrentLoad.png)
+
 #### What response times do you observe in the test tool and App Engine console ?
 | Tool | average response times (ms) |
 |---|---|
-| App-Engine  | 60 |
-| Jmeter  |  21 |
+| App-Engine  | 6,428 |
+| Jmeter  |  11 |
 
 ### Datastore Servlet
 #### JMeter Graph Results listener
 ![alt text](./GraphDatastoreServlet.png)
 #### App Engine Dashboard view
-![alt text](./DatastoreDashboard.png)
+![alt text](./dashboardDatastoreLatency.png)
+![alt text](./dashboardDatastoreNbInstance.png)
 ![alt text](./DatastoreDashboardSuite.png)
+![alt text](./dashboardDatastoreCurrentLoad.png)
 #### What response times do you observe in the test tool and App Engine console ?
 | Tool | average response times (ms) |
 |---|---|
-| App-Engine  |  1173 |
-| Jmeter  | 1994 |
+| App-Engine  |  1,478 |
+| Jmeter  | 1505 |
 
 
 ### Compare the response times shown by the test tool and the App Engine console. Explain the difference.
@@ -242,7 +239,6 @@ We didn't find any informations about the quotas ! So we juste have described wh
 
 
 ### Let's suppose you become suspicious that the algorithm for the automatic scaling of instances is not working correctly. Imagine a way in which the algorithm could be broken. Which measures shown in the console would you use to detect this failure?
-1. Limit of the number of instances
-2. Daily quota limit: Check the status of the different quotas in the "Quotas" menu
-4. Services de la platform Google Cloud indisponible : View the status of services at: https://status.cloud.google.com
+1. Daily quota limit (number of instances,  )Check the status of the different quotas in the "Quotas" menu
+2. Google Cloud platform services unavailable : View the status of services at https://status.cloud.google.com
 
