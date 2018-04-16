@@ -183,7 +183,6 @@ To view your application in the web browser run:
 
 
 ### Generated Servlet
-#### JMeter 
 #### JMeter Graph Results listener
 ![alt text](./GraphGeneratedServlet.png)
 #### App Engine Dashboard view
@@ -191,52 +190,59 @@ To view your application in the web browser run:
 #### What response times do you observe in the test tool and App Engine console ?
 | Tool | average response times (ms) |
 |---|---|
-| App-Engine  |   |
-| Jmeter  |   |
+| App-Engine  | 60 |
+| Jmeter  |  21 |
 
 ### Datastore Servlet
 #### JMeter Graph Results listener
 ![alt text](./GraphDatastoreServlet.png)
 #### App Engine Dashboard view
 ![alt text](./DatastoreDashboard.png)
+![alt text](./DatastoreDashboardSuite.png)
 #### What response times do you observe in the test tool and App Engine console ?
 | Tool | average response times (ms) |
 |---|---|
-| App-Engine  |   |
-| Jmeter  |   |
+| App-Engine  |  1173 |
+| Jmeter  | 1994 |
 
 
 ### Compare the response times shown by the test tool and the App Engine console. Explain the difference.
-Les temps de réponses entre le dashboard et jmeter ne correspondent pas. La différence s'explique par la période de temps sur laquelle sont calculés les temps de réponses moyen.
-Chaque test Jmeter est effecuté indépendament des autres. C'est-à-dire que les valeurs calculées ne sont valides que pour ce test.
-Alors que la valeur disponible sur la console de l'App Engine est calculé en prenant en compte toutes les valeurs depuis sa création.
+The response time average available trough the App Engine Dashboard and Jmeter do not match. The difference can be explained by 2 mains reasons:
+1. The period over which the response time average is calculated isn't the same in the App Engine Dashboard and Jmeter. Every Jmeter is run independently and it calculate the average ony for the exectued test. While the value available on the console of the App Engine is calculated on all the dataset available (regroups several tests).
+2. Measures are not collected in the same way. Jmeter calculate the responses time when it actualy receive the response. App Engine can not use the same approcahe beacuse it doesn't know when the response reach the client.
 
 ### How much resources have you used running these tests?
 From the Quota Details view of the console determine the non-zero resource quotas (Daily quota different from 0%). Explain each with a sentence. To get a sense of everything that is measured click on Show 
 resources not in use.
 
+![Image](./Quotas.png)
+
+We didn't find any informations about the quotas ! So we juste have described which resources we used and a short description.
+
 #### Request
-|  Ressource | Description  | Daily Quota  |
-|---|---|---|
-|   |   |   |
+|  Ressource | Description  |
+|---|---|
+| Request | Number of request send to the app  |
+| Outgoing Bandwidth | Traffic coming out of the application (reponses)  |
+| Incoming Bandwidth | Incoming traffic from the application (requests)  |
+| Frontend Instance Hours | Time (in hours) of frontend activity |
 
 #### Storage
-|  Ressource | Description  | Daily Quota  |
-|---|---|---|
-|   |   |   |
-
-#### Deployments
-|  Ressource | Description  | Daily Quota  |
-|---|---|---|
-|   |   |   |
-
+|  Ressource | Description  |
+|---|---|
+| Cloud Datastore Read Operations | The total number of Datastore read operations  |
+| Cloud Datastore API Calls | Number of time that the API has been called  |
+| Cloud Datastore Stored Data | Amount of data which is stored in the datastore   |
+| Data Sent to Cloud Datastore API | Amout of data which has been sent to API  |
+| Data Received from Cloud Datastore API | Amout of data which has been receive from API|
+| Cloud Datastore Entity Fetch Ops| Number of entities who have been recover  |
+| Cloud Datastore Entity Writes | Number of entity write to datastore |
+| Cloud Datastore Entity Deletes | Number of entity's deletation |
+| Cloud Datastore Index Write Ops | Number of index who has been write to datastore  |
 
 
 ### Let's suppose you become suspicious that the algorithm for the automatic scaling of instances is not working correctly. Imagine a way in which the algorithm could be broken. Which measures shown in the console would you use to detect this failure?
-1. Limite du nombre d'instance
-  * 
-2. Limite du quota journalier
-  * Consulter l'états des différents quota dans le menu "Quotas"
-3. Services de la platform Google Cloud indisponible
-  * Consulter les status des services à l'adresse : https://status.cloud.google.com
+1. Limit of the number of instances
+2. Daily quota limit: Check the status of the different quotas in the "Quotas" menu
+4. Services de la platform Google Cloud indisponible : View the status of services at: https://status.cloud.google.com
 
